@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"
+        integrity="sha512-dQIiHSl2hr3NWKKLycPndtpbh5iaHLo6MwrXm7F0FM5e+kL2U16oE9uIwPHUl6fQBeCthiEuV/rzP3MiAB8Vfw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: white;
+
+        }
+
+
+        body {
+            display: flex;
+
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #323;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 20px 0;
+        }
+
+        #webCam {
+            border: 1px solid black;
+
+
+        }
+
+        .hello {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 120px;
+            padding: 20px 0;
+            width: 100%;
+            box-shadow: 2px 2px 10px 2px black;
+            background-color: blueviolet;
+        }
+
+        input {
+            border-radius: 5px;
+            border: none;
+            padding: 5px;
+            outline: none;
+            color: black;
+        }
+
+        body {
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+
+
+        button {
+            color: black;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .hello {
+            display: flex;
+
+            align-items: center;
+            width: 100%;
+
+            justify-content: space-between;
+        }
+
+        .hello div {
+            padding: 0 5px;
+            height: 140%;
+            width: 50%;
+            margin-top : 5px;
+
+        }
+
+        .abc {
+            overflow: scroll;
+         
+            /* box-shadow: 1px 1px 20px 1px black; */
+
+        }
+        li {
+          margin-top: 5px;
+
+          
+            border-radius: 4px ;
+        width : 105%;
+        text-align: left;
+        padding : 2px;
+        box-shadow: 1px 1px 5px 2px;
+        }
+
+    
+::-webkit-scrollbar {
+  width: 0px;
+  height : 0px;
+}
+
+
+::-webkit-scrollbar-track {
+  background:blue;
+
+}
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1> Live video Streaming</h1>
+        <div class="yVideo">
+    <iframe width="360" height="260" src="https://www.youtube.com/embed/yq8UUH4IhOQ" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+        </div>
+        <div id="webCam">
+
+        </div>
+        <div class='hello'>
+            <div className="hey"><input type="text" placeholder="Enter your reaction" id="text">
+                <button onclick="send()">Send</button>
+            </div>
+
+            <div class="abc">
+                <div >
+                    <ul id="list">
+                 
+                       
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+
+
+        Webcam.set({
+            width: 360,
+            height: 170,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        })
+        Webcam.attach("#webCam")
+
+        function send (e) {
+            const x = document.getElementById("text").value;
+            const y = document.getElementById('list')
+            var z = document.createElement("li")
+            // console.log(y,z);
+            if(x) {
+
+                y.appendChild(z);
+                z.innerHTML = x;
+                 document.getElementById("text").value = ""
+            }
+            else {
+                e.preventDefault();
+            }
+
+            console.log(x);
+        }
+
+
+    </script>
+
+</body>
+
+</html>
